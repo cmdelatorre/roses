@@ -1,0 +1,5 @@
+Django==1.7
+django-extensions==1.4.0
+ipython==2.2.0
+pytz==2014.7
+six==1.8.0

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SKIMO | Welcome</title>
+    <link rel="stylesheet" href="{% static 'skills/css/foundation.css' %}" />
+    {% block css %}
+    {% endblock %}
+    <script src="{% static 'skills/js/vendor/modernizr.js' %}"></script>
+  </head>
+  <body>
+
+    {% block body %}
+    {% endblock %}
+
+    <script src="{% static 'skills/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'skills/js/foundation.min.js' %}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    {% block end_js %}
+    {% endblock %}
+  </body>
+</html>

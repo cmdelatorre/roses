@@ -1,0 +1,21 @@
+{% extends "skills/base.html" %}
+{% block body %}
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+
+        <h1>Roles</h1>
+        <ul>
+        {% for role in object_list %}
+            <li>{{ role }}</li>
+        {% empty %}
+            <li>No roles yet.</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
