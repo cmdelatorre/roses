@@ -2,23 +2,7 @@
 {% block main_contents %}
 
     <div class="row">
-      <div class="small-12 large-6 columns">
-        <div class="row ">
-
-             <div class="panel">
-                <h1>Roles</h1>
-                <ul>
-                {% for role in object_list %}
-                    <li>{{ role }}</li>
-                {% empty %}
-                    <li>No roles yet.</li>
-                {% endfor %}
-                </ul>
-            </div>
-
-        </div>
-       </div>
-        <div class="small-12 large-6 columns">
+        <div class="small-12">
           <div class="row">
             <div class="small-12 columns">
 
@@ -36,8 +20,8 @@
                         {{ field.label_tag }} {{ field }}
                     </div>
                 {% endfor %}
-                <a href="{% url 'skills:role_add' %}" class="button">Add Role</a>
-
+                <button type="submit" class="button success">Save</button>
+                <a type="cancel" class="button" onClick="history.go(-1);return true;">Cancel</a>
               </form>
             </div>
           </div>

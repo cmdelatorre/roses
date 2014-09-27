@@ -1,31 +1,19 @@
 {% extends "skills/base.html" %}
 {% block main_contents %}
-
-    <div class="row">
-        <div class="small-12">
-          <div class="row">
-            <div class="small-12 columns">
-
-              <form action="" method="post">
-                {% csrf_token %}
-
-                {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-                {% endfor %}
-
-                {{ form.non_field_errors }}
-                {% for field in form.visible_fields %}
-                    <div class="fieldWrapper">
-                        {{ field.errors }}
-                        {{ field.label_tag }} {{ field }}
-                    </div>
-                {% endfor %}
-                <button type="submit" class="button">Add Role</a>
-
-              </form>
-            </div>
-          </div>
-        </div>
+<div class="row">
+    <div class="small-6 small-centered columns">
+        <h1>Delete</h1>
     </div>
+</div>
 
+<div class="row">
+    <div class="small-6 small-centered columns">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete <em>{{ object }}</em>?</p>
+            <input type="submit" value="Confirm" class="button small alert"/>
+            <input type="button" value="Cancel" class="button small" onClick="history.go(-1);return true;" />
+        </form>
+    </div>
+</div>
 {% endblock %}

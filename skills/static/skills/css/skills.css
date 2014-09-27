@@ -1,0 +1,23 @@
+img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+@media only screen and (min-width: 0) and (max-width: 64em) {
+  img, form, .button {
+    padding: 20px;
+  }
+  .button {
+    margin: 20px;
+  }
+}
+
+.row {
+  max-width: 80rem;
+  margin-bottom: 20px;
+}
+
+.alert-box {
+  margin-bottom: 0;
+}
