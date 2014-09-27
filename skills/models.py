@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 NAME_MAX_LEN = 256
@@ -7,10 +8,13 @@ SKILL_NAME_MAX_LEN = 1024
 
 class Role(models.Model):
     name = models.CharField(max_length=NAME_MAX_LEN)
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('skills:roles')
 
 class Seniority(models.Model):
     name = models.CharField(max_length=NAME_MAX_LEN)
