@@ -1,31 +1,55 @@
 {% extends "skills/base.html" %}
 {% block main_contents %}
 
+{% include 'skills/snippets/save_form.html' with entity_name="Seniority" form=form %}
+
+{% if role %}
     <div class="row">
-        <div class="small-12">
-          <div class="row">
-            <div class="small-12 columns">
+        <div class="small-12 columns">
+            <h1>Role seniorities</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Edit</th>
+                  <th>Skills</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for sen in page_obj %}
+                <tr>
+                    <td>{{ sen.name }}</td>
+                    <td><a href="{% url 'skills:seniority_update' pk=sen.pk %}">Edit</td>
+                    <td>Skills</td>
+                    <td><a class="right" title="Delete" href="{% url 'skills:seniority_delete' pk=sen.pk %}">
+                        <span class="round alert label">X</span></a>
+                    </td>
+                </tr>
 
-              <form action="" method="post">
-                {% csrf_token %}
-
-                {% for hidden in form.hidden_fields %}
-                {{ hidden }}
+                {% empty %}
+                    <tr>No related seniorities.</tr>
                 {% endfor %}
+              </tbody>
+            </table>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
 
-                {{ form.non_field_errors }}
-                {% for field in form.visible_fields %}
-                    <div class="fieldWrapper">
-                        {{ field.errors }}
-                        {{ field.label_tag }} {{ field }}
-                    </div>
-                {% endfor %}
-                <button type="submit" class="button success">Save</button>
-                <a type="cancel" class="button" onClick="history.go(-1);return true;">Cancel</a>
-              </form>
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
             </div>
-          </div>
+            <a href="{% url 'skills:seniority_add' %}" class="small button success">Add A Seniority</a>
         </div>
     </div>
+{% endif %}
 
 {% endblock %}

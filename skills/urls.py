@@ -12,4 +12,8 @@ urlpatterns = patterns('',
     url(r'^role/add/$', views.RoleCreate.as_view(), name='role_add'),
     url(r'^role/(?P<pk>\d+)/$', views.RoleUpdate.as_view(), name='role_update'),
     url(r'^role/(?P<pk>\d+)/delete/$', views.RoleDelete.as_view(), name='role_delete'),
+    #
+    url(r'^seniority/add/$', views.SeniorityCreate.as_view(), name='seniority_add'),
+    url(r'^seniority/(?P<pk>\d+)/$', views.SeniorityUpdate.as_view(), name='seniority_update'),
+    url(r'^seniority/(?P<pk>\d+)/delete/$', views.SeniorityDelete.as_view(), name='seniority_delete'),
 )

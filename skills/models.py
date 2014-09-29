@@ -16,14 +16,17 @@ class Role(models.Model):
     def get_absolute_url(self):
         return reverse('skills:roles')
 
+
 class Seniority(models.Model):
     name = models.CharField(max_length=NAME_MAX_LEN)
-    rank = models.IntegerField()
+    rank = models.PositiveSmallIntegerField()
     role = models.ForeignKey('skills.Role', related_name='seniorities')
 
     def __str__(self):
         return '{self.role} - {self.name}'.format(self=self)
 
+    def get_absolute_url(self):
+        return reverse('skills:seniority_update', kwargs={'pk': self.pk})
 
 class Skill(models.Model):
     name = models.CharField(max_length=SKILL_NAME_MAX_LEN)
