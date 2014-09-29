@@ -1,0 +1,14 @@
+{% extends "skills/base.html" %}
+{% block main_contents %}
+
+{% include 'skills/snippets/save_form.html' with entity_name="Skill" form=form %}
+
+{% if skill %}
+    <div class="row">
+        <div class="small-12 columns">
+           Show Roles/seniorities with this skill's level
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

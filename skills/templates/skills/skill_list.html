@@ -4,34 +4,32 @@
     <div class="row">
         <div class="small-12">
 
-            <h1>Roles</h1>
+            <h1>Skills</h1>
             <table>
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Description</th>
                   <th>Edit</th>
-                  <th>Seniorities</th>
                   <th>&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
-                {% for role in object_list %}
+                {% for skill in object_list %}
                 <tr>
-                    <td>{{ role.name }}</td>
-                    <td>{{ role.description }}</td>
-                    <td><a href="{% url 'skills:role_update' pk=role.pk %}">Edit</td>
+                    <td>{{ skill.name }}</td>
+                    <td><a href="{% url 'skills:skill_update' pk=skill.pk %}">Edit</td>
                     <td>Skills</td>
-                    <td><a class="right" title="Delete" href="{% url 'skills:role_delete' pk=role.pk %}"><span class="round alert label">X</span></a></td>
+                    <td><a class="right" title="Delete" href="{% url 'skills:skill_delete' pk=skill.pk %}"><span class="round alert label">&times;</span></a></td>
                 </tr>
 
                 {% empty %}
-                    <tr>No roles yet.</tr>
+                    <tr><td colspan="3">No skills yet.</td></tr>
                 {% endfor %}
               </tbody>
             </table>
 
-            <a href="{% url 'skills:role_add' %}" class="button">Add Role</a>
+            <a href="{% url 'skills:skill_add' %}" class="button">Add SKill</a>
 
         </div>
     </div>

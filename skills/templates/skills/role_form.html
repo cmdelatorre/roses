@@ -1,29 +1,19 @@
 {% extends "skills/base.html" %}
 {% block main_contents %}
 
-{% include 'skills/snippets/save_form.html' with entity_name="Seniority" form=form %}
+{% include 'skills/snippets/save_form.html' with entity_name="Role" form=form %}
 
 {% if role %}
     <div class="row">
         <div class="small-12 columns">
             <h1>Role seniorities</h1>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Edit</th>
-                  <th>Skills</th>
-                  <th>&nbsp;</th>
-                </tr>
-              </thead>
               <tbody>
                 {% for sen in page_obj %}
                 <tr>
-                    <td>{{ sen.name }}</td>
-                    <td><a href="{% url 'skills:seniority_update' pk=sen.pk %}">Edit</td>
-                    <td>Skills</td>
+                    <td><a href="{% url 'skills:seniority_update' pk=sen.pk %}">{{ sen.name }}</td>
                     <td><a class="right" title="Delete" href="{% url 'skills:seniority_delete' pk=sen.pk %}">
-                        <span class="round alert label">X</span></a>
+                        <span class="round alert label">&times;</span></a>
                     </td>
                 </tr>
 

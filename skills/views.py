@@ -2,10 +2,10 @@ from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.views.generic.list import MultipleObjectMixin
 
-from skills.models import Role, Seniority
+from skills.models import Role, Seniority, Skill
 
 
-class RolesView(generic.ListView):
+class RolesList(generic.ListView):
     model = Role
     fields = ['name', 'description']
     template_name = 'skills/role_list.html'
@@ -64,5 +64,31 @@ class SeniorityUpdate(generic.UpdateView, MultipleObjectMixin):
 
 class SeniorityDelete(generic.DeleteView):
     model = Seniority
+    success_url = reverse_lazy('skills:roles')
+    template_name = 'skills/confirm_delete.html'
+
+
+#
+# SKills
+#
+
+class SkillsList(generic.ListView):
+    model = Skill
+    fields = ['name']
+
+class SkillCreate(generic.CreateView):
+    model = Skill
+    fields = ['name']
+    success_url = reverse_lazy('skills:skills')
+
+
+class SkillUpdate(generic.UpdateView):
+    model = Skill
+    fields = ['name']
+    success_url = reverse_lazy('skills:skills')
+
+
+class SkillDelete(generic.DeleteView):
+    model = Skill
     success_url = reverse_lazy('skills:roles')
     template_name = 'skills/confirm_delete.html'
