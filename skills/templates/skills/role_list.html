@@ -3,37 +3,36 @@
 
     <div class="row">
         <div class="small-12">
-            <div class="row ">
-                <h1>Roles</h1>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Edit</th>
-                      <th>Seniorities</th>
-                      <th>&nbsp;</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for role in object_list %}
-                    <tr>
-                        <td>{{ role.name }}</td>
-                        <td>{{ role.description }}</td>
-                        <td><a href="{% url 'skills:role_update' pk=role.pk %}">Edit</td>
-                        <td>Skills</td>
-                        <td><a class="right" title="Delete" href="{% url 'skills:role_delete' pk=role.pk %}"><span class="round alert label">X</span></a></td>
-                    </tr>
 
-                    {% empty %}
-                        <li>No roles yet.</li>
-                    {% endfor %}
-                  </tbody>
-                </table>
+            <h1>Roles</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Edit</th>
+                  <th>Seniorities</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for role in object_list %}
+                <tr>
+                    <td>{{ role.name }}</td>
+                    <td>{{ role.description }}</td>
+                    <td><a href="{% url 'skills:role_update' pk=role.pk %}">Edit</td>
+                    <td>Skills</td>
+                    <td><a class="right" title="Delete" href="{% url 'skills:role_delete' pk=role.pk %}"><span class="round alert label">X</span></a></td>
+                </tr>
 
-                <a href="{% url 'skills:role_add' %}" class="button">Add Role</a>
+                {% empty %}
+                    <li>No roles yet.</li>
+                {% endfor %}
+              </tbody>
+            </table>
 
-            </div>
+            <a href="{% url 'skills:role_add' %}" class="button">Add Role</a>
+
         </div>
     </div>
 
